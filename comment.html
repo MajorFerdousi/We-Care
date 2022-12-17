@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="description"
+        content="Use a free Google Firebase Database to allow visitors to leave comments on your web pages. From https://AlanSimpson.me/firebase">
+    <meta name="author" content="Alan Simpson">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="assets/css/comment.css">
+
+</head>
+
+<body>
+    <div id="allcomments">
+        <div class="typing-demo">
+            Leave Us a Comment..
+        </div>
+        <form id="newcomment">
+            <label for="tbName">Your Name</label>
+            <br>
+            <input class="myname" id="tbName" type="text" maxlength="20" required>
+            <br>
+            <label for="txComment">Your Comment</label>
+            <br>
+            <textarea id="txComment" maxlength="600" required style="width: 60%;"></textarea>
+            <br>
+            <input class="cmntsubmit" type="submit" id="btnSubmitComment" value="SUBMIT">
+        </form>
+        <h3>Comments</h3>
+        <ul id="pastcomments"></ul>
+    </div>
+
+
+    <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-database.js"></script>
+    <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyALA3ZUFUFoRsYod9cNbG19sxsvIX1yQBA",
+            authDomain: "wecare-bfaf5.firebaseapp.com",
+            projectId: "wecare-bfaf5",
+            databaseURL: "https://wecare-bfaf5-default-rtdb.firebaseio.com",
+            storageBucket: "wecare-bfaf5.appspot.com",
+            messagingSenderId: "593648688848",
+            appId: "1:593648688848:web:d87bd85c79e40ab56848d5",
+            measurementId: "G-DGSNFPZVT7"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+
+
+
+        const rootRef = firebase.database().ref();
+        const commentsRef = rootRef.child('comments');
+        document.getElementById("btnSubmitComment").addEventListener("click", function () {
+            var newcomment = document.getElementById('txComment').value.replace(/\n/g, "<br>");
+            var newPostRef = commentsRef.push();
+            newPostRef.set({
+                name: document.getElementById('tbName').value.trim(),
+                comment: newcomment.trim(),
+                frompage: location.pathname,
+                when: firebase.database.ServerValue.TIMESTAMP
+            });
+
+        });
+
+        function showpastcomments() {
+            var showat = document.getElementById('pastcomments');
+            //Get comments whose from page equals this page's pathname.
+            var commentsRef = firebase.database().ref('comments/').orderByChild('frompage').equalTo(location.pathname);
+            commentsRef.once('value', function (snapshot) {
+                snapshot.forEach(function (itemSnapshot) {
+                    //Get the object for one snapshot
+                    var itemData = itemSnapshot.val();
+                    var comment = itemData.comment;
+                    var name = itemData.name;
+                    var when = new Date(itemData.when).toLocaleDateString("en-us");
+                    showat.innerHTML += "<li>" + comment + "<span> -- " + name + " (" + when +
+                        ")</span></li>";
+                })
+            })
+        }
+        //Called when page first opens and also after Submit button click to show all comments for this page.
+        showpastcomments()
+    </script>
+
+</body>
+
+</html>

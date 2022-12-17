@@ -1,0 +1,205 @@
+/*@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500);*/
+*:focus {
+    outline: none;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    background-image: linear-gradient(to right, #2c3e50, #4ca1af);
+    font-size: 16px;
+    color: rgb(0, 0, 0);
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+  }
+  
+  #login-box {
+    position: relative;
+    margin: 5% auto;
+    width: 500px;
+    height: 400px;
+    background: rgba( 255, 255, 255, 0.25 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  }
+  
+  .left {
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    padding: 40px;
+    width: 250px;
+    height: 400px;
+  }
+  
+  h1 {
+    margin: 0 0 20px 0;
+    font-weight: 700;
+    font-size: 28px;
+    color: wheat;
+    margin-left: 50px;
+  }
+  
+  input[type="text"],
+  input[type="password"] {
+    display: block;
+    box-sizing: border-box;
+    margin-bottom: 30px;
+    padding: 4px;
+    width: 200px;
+    height: 32px;
+    border: none;
+    border-radius: 5px;
+    border-bottom: 1px solid #AAA;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    transition: 0.2s ease;
+  }
+  
+  input[type="text"]:focus,
+  input[type="password"]:focus {
+    border-bottom: 2px solid #16a085;
+    color: #16a085;
+    transition: 0.2s ease;
+  }
+  
+  input[type="submit"] {
+    margin-top: 20px;
+    width: 100px;
+    height: 32px;
+    margin-left: 50px;
+    background: #1ed488;
+    border: none;
+    border-radius: 5px;
+    color: #FFF;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: 0.1s ease;
+    cursor: pointer;
+  }
+  
+  input[type="submit"]:hover,
+  input[type="submit"]:focus {
+    opacity: 0.8;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    transition: 0.1s ease;
+  }
+  
+  input[type="submit"]:active {
+    opacity: 1;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+    transition: 0.1s ease;
+  }
+  
+  .or {
+    position: absolute;
+    top: 180px;
+    left: 280px;
+    width: 40px;
+    height: 40px;
+    background: rgb(243, 196, 110);
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    line-height: 40px;
+    text-align: center;
+  }
+  
+  .right {
+    position: absolute;
+    top: 0;
+    right: 0;
+    box-sizing: border-box;
+    padding: 40px;
+    width: 250px;
+    height: 400px;
+    background: rgba( 55, 212, 30, 0.15 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 0.5px );
+    -webkit-backdrop-filter: blur( 0.5px );
+    border-radius: 10px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 0 2px 2px 0;
+  }
+  
+  .right .loginwith {
+    position: absolute;
+    top: 120px;
+    left: 45px;
+    display: block;
+    font-size: 28px;
+    color: #FFF;
+    text-align: center;
+  }
+
+ .right .login {
+    position: absolute;
+    top: 120px;
+    left: 60px;
+    display: block;
+    font-size: 28px;
+    color: #FFF;
+    text-align: center;
+  }
+  
+.right .social a {
+    position: relative;
+    top: 160px;
+    left: 25px;
+    align-items: center;
+    font-size: 25px;
+    display: inline-block;
+    background: #ef6603;
+    color: #fff;
+    line-height: 1;
+    border-radius: 50%;
+    text-align: center;
+    width: 40px;
+    height: 40px;
+    transition: 0.3s;
+    
+  }
+
+  .right .social a i{
+      color: #ffffff;
+      position: relative;
+      top: 20%;
+  }
+
+ .right .social a:hover {
+    background: #36f806;
+    color: #fff;
+    text-decoration: none;
+  }
+  
+.right a{
+    color: #FFF;
+    text-decoration: none;
+    position: absolute;
+    bottom: 20px;
+    left: 100px;
+    font-weight: 500;
+}
+
+.right a:hover{
+    color: #ef6603;
+}
+
+.home{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    }
+.home a{
+    color: white;
+}
+
+.home a:hover{
+    color: #ef6603;
+}
